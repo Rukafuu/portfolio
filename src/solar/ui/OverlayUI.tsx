@@ -63,9 +63,10 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
       zIndex: 100,
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
+      justifyContent: window.innerWidth < 768 ? 'flex-start' : 'center',
       alignItems: isFinale ? 'center' : 'flex-start',
-      padding: 'var(--hud-padding)'
+      padding: 'var(--hud-padding)',
+      paddingTop: window.innerWidth < 768 ? '80px' : '0'
     }}>
       <AnimatePresence mode="wait">
         <motion.div
@@ -262,7 +263,7 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
               )}
 
               {content.cards.length > 0 && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
                   {content.cards.map((card, idx) => (
                     <div key={card.title} style={{ padding: '1.5rem', background: 'rgba(0, 242, 254, 0.05)', border: '1px solid rgba(0, 242, 254, 0.1)', position: 'relative' }}>
                       <h3 className="mono" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>{card.title}</h3>

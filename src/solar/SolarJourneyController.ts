@@ -26,6 +26,15 @@ export class SolarJourneyController {
       }
     });
 
+    // Add click/tap support for mobile navigation
+    window.addEventListener('click', (e) => {
+        // Prevent navigation if user clicked on an interactive element (button, link)
+        const target = e.target as HTMLElement;
+        if (target.closest('button, a, input, [role="button"]')) return;
+        
+        this.next();
+    });
+
     console.log(`JourneyController: Initialized at ${new Date().toLocaleTimeString()}`);
   }
 

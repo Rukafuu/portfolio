@@ -26,17 +26,22 @@
 
 @media (max-width: 768px) {
   :root {
-    --title-size: 2.2rem;
-    --body-size: 1rem;
+    --title-size: 1.8rem;
+    --body-size: 0.95rem;
     --hud-padding: 0 4%;
   }
   
   section {
-    padding: 3rem 5%;
+    padding: 2rem 5%;
   }
 
   .hud-card {
-    padding: 1rem;
+    padding: 1.2rem;
+    clip-path: none; /* Remove clip-path on mobile for more space */
+    border-radius: 8px;
+    max-height: 70vh;
+    overflow-y: auto;
+    width: 92vw;
   }
 }
 

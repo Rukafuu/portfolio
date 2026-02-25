@@ -57,18 +57,27 @@ export default function App() {
       <OverlayUI sectionKey={sectionKey} />
       <AudioUI manager={audioManager.current} />
 
-      {/* SPACE Navigation Hint */}
-      <div className="mono" style={{
-        position: 'fixed',
-        bottom: '40px',
-        right: '40px',
-        color: 'var(--primary)',
-        fontSize: '0.7rem',
-        opacity: 0.6,
-        zIndex: 50,
-        pointerEvents: 'none'
-      }}>
-        [ PRESS_SPACE_TO_TRAVEL ]
+      {/* Navigation Hint */}
+      <div 
+        className="mono" 
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          color: 'var(--primary)',
+          fontSize: '0.65rem',
+          opacity: 0.8,
+          zIndex: 1000,
+          pointerEvents: 'auto',
+          cursor: 'pointer',
+          background: 'rgba(0, 242, 254, 0.1)',
+          padding: '8px 15px',
+          border: '1px solid var(--primary)',
+          borderRadius: '4px'
+        }}
+        onClick={() => engineRef.current?.journey.next()}
+      >
+        [ {window.innerWidth < 768 ? 'TAP_TO_TRAVEL' : 'TAP_OR_SPACE_TO_TRAVEL'} ]
       </div>
     </div>
   );
