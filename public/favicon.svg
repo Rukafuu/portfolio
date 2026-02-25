@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#050816"/>
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="45" fill="#00f2fe" style="letter-spacing: -2px;">LF</text>
+  <path d="M20 20 L30 20 L30 30 M80 80 L70 80 L70 70" stroke="#00f2fe" stroke-width="2" fill="none"/>
+</svg>
