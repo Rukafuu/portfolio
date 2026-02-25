@@ -130,10 +130,10 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
             </div>
           ) : (
             <div className="hud-card">
-              <h1 className="gradient-text mono" style={{ fontSize: '2.5rem', marginBottom: '1.2rem', fontStyle: isPluto ? 'italic' : 'normal' }}>
+              <h1 className="gradient-text mono" style={{ fontSize: 'var(--title-size)', marginBottom: '1rem', fontStyle: isPluto ? 'italic' : 'normal', lineHeight: 1.1 }}>
                 {content.title}
               </h1>
-              <p style={{ color: 'var(--text-dim)', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: isLanguage ? '3rem' : '1.5rem' }}>
+              <p style={{ color: 'var(--text-dim)', fontSize: 'var(--body-size)', lineHeight: '1.5', marginBottom: isLanguage ? '2rem' : '1.2rem' }}>
                 {content.body}
               </p>
 
@@ -211,7 +211,7 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                             }}>
                                 {step.key}
                             </div>
-                            <div style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+                            <div style={{ color: 'var(--text-dim)', fontSize: 'var(--body-size)' }}>
                                 {step.desc}
                             </div>
                           </motion.div>
@@ -220,7 +220,7 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
               )}
 
               {isLanguage && (
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.8rem' }}>
                       {LANGUAGES.map(lang => (
                           <motion.button
                             key={lang.code}
@@ -242,8 +242,8 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                           >
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                    <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{lang.label}</span>
-                                    <span style={{ fontSize: '0.6rem', opacity: 0.6, marginTop: '5px' }}>{lang.native}</span>
+                                    <span style={{ fontSize: 'var(--body-size)', fontWeight: 'bold' }}>{lang.label}</span>
+                                    <span style={{ fontSize: '0.6rem', opacity: 0.6, marginTop: '2px' }}>{lang.native}</span>
                                 </div>
                                 <span style={{ fontSize: '1.5rem' }}>{lang.flag}</span>
                               </div>
@@ -266,8 +266,8 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1.5rem' }}>
                   {content.cards.map((card, idx) => (
                     <div key={card.title} style={{ padding: '1.5rem', background: 'rgba(0, 242, 254, 0.05)', border: '1px solid rgba(0, 242, 254, 0.1)', position: 'relative' }}>
-                      <h3 className="mono" style={{ color: 'var(--primary)', fontSize: '1.1rem', marginBottom: '0.5rem' }}>{card.title}</h3>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', marginBottom: '1.5rem', lineHeight: '1.4' }}>{card.description}</p>
+                      <h3 className="mono" style={{ color: 'var(--primary)', fontSize: '1rem', marginBottom: '0.4rem' }}>{card.title}</h3>
+                      <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginBottom: '1.2rem', lineHeight: '1.4' }}>{card.description}</p>
                       
                       <div style={{ display: 'flex', gap: '1rem' }}>
                         {content.links[idx * 2] && (

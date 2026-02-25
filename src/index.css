@@ -26,22 +26,29 @@
 
 @media (max-width: 768px) {
   :root {
-    --title-size: 1.8rem;
-    --body-size: 0.95rem;
-    --hud-padding: 0 4%;
+    --title-size: 1.6rem;
+    --body-size: 0.9rem;
+    --hud-padding: 0 3%;
   }
   
   section {
-    padding: 2rem 5%;
+    padding: 1.5rem 4%;
   }
 
   .hud-card {
-    padding: 1.2rem;
-    clip-path: none; /* Remove clip-path on mobile for more space */
+    padding: 1rem;
+    clip-path: none;
     border-radius: 8px;
-    max-height: 70vh;
+    max-height: 75vh;
     overflow-y: auto;
-    width: 92vw;
+    width: 94vw;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --title-size: 1.4rem;
+    --body-size: 0.85rem;
   }
 }
 
