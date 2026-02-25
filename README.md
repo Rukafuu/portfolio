@@ -1,11 +1,36 @@
 # 🌌 Lira Solar Ecosystem - Premium Portfolio
 
+<div align="center">
+  <img src="./public/assets/readme/hero.png" width="100%" alt="Solar Ecosystem Hero Banner" />
+  <br />
+  <p><i>"Nós somos poeira estelar feita de código."</i></p>
+</div>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-00f2fe.svg)](https://opensource.org/licenses/MIT)
 [![Three.js](https://img.shields.io/badge/Three.js-r183-black)](https://threejs.org/)
 [![React](https://img.shields.io/badge/React-19-blue)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7-646cff)](https://vitejs.dev/)
 
-Um ecossistema orbital interativo construído com **Three.js** e **React Three Fiber**. Este não é apenas um portfolio, é uma jornada através de uma arquitetura digital, explorando tecnologias e projetos como se fossem corpos celestes.
+---
+
+## 🧭 Destinos da Jornada (Visual Previews)
+
+Explore os principais módulos do sistema solar através deste guia visual:
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>☀️ The Sun</b><br/><img src="https://raw.githubusercontent.com/Rukafuu/portfolio/main/public/textures/solar/2k_sun.jpg" width="150"/><br/><i>Tutorial & Engine Start</i></td>
+      <td align="center"><b>🌍 Earth</b><br/><img src="https://raw.githubusercontent.com/Rukafuu/portfolio/main/public/textures/solar/2k_earth_daymap.jpg" width="150"/><br/><i>Language Selection</i></td>
+      <td align="center"><b>🔴 Mars</b><br/><img src="https://raw.githubusercontent.com/Rukafuu/portfolio/main/public/textures/solar/2k_mars.jpg" width="150"/><br/><i>Project Archives</i></td>
+    </tr>
+    <tr>
+      <td align="center"><b>🪐 Saturn</b><br/><img src="https://raw.githubusercontent.com/Rukafuu/portfolio/main/public/textures/solar/2k_saturn.jpg" width="150"/><br/><i>Stacks & Creative</i></td>
+      <td align="center"><b>🛰️ Voyager-1</b><br/>🌀<br/><i>System Infra</i></td>
+      <td align="center"><b>🌑 Gargantua</b><br/>🕳️<br/><i>The Singularity</i></td>
+    </tr>
+  </table>
+</div>
 
 ---
 
