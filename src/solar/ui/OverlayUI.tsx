@@ -65,7 +65,7 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: isFinale ? 'center' : 'flex-start',
-      padding: isFinale ? '0' : '0 8%'
+      padding: 'var(--hud-padding)'
     }}>
       <AnimatePresence mode="wait">
         <motion.div
@@ -77,14 +77,26 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
           style={{ 
               pointerEvents: 'auto', 
               width: isFinale ? '100%' : 'auto',
-              maxWidth: isFinale ? '1000px' : '650px',
+              maxWidth: isFinale ? '100%' : '650px',
               textAlign: isFinale ? 'center' : 'left'
           }}
         >
           {isIntro ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '3rem', flexWrap: 'wrap' }}>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: 'clamp(1.5rem, 5vw, 3rem)', 
+                flexDirection: window.innerWidth < 768 ? 'column' : 'row',
+                textAlign: window.innerWidth < 768 ? 'center' : 'left'
+              }}>
                   <motion.div 
-                    style={{ width: '220px', height: '280px', position: 'relative', border: '1px solid var(--primary)' }}
+                    style={{ 
+                        width: 'clamp(150px, 30vw, 220px)', 
+                        height: 'clamp(190px, 40vw, 280px)', 
+                        position: 'relative', 
+                        border: '1px solid var(--primary)',
+                        margin: window.innerWidth < 768 ? '0 auto' : '0'
+                    }}
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                   >
@@ -93,10 +105,10 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                         ID_CORE: 334099538
                       </div>
                   </motion.div>
-                  <div style={{ flex: 1, minWidth: '350px' }}>
+                  <div style={{ flex: 1, minWidth: window.innerWidth < 768 ? '100%' : '350px' }}>
                     <h2 className="mono" style={{ color: 'var(--accent)', fontSize: '0.8rem', marginBottom: '0.5rem' }}>{content.meta}</h2>
-                    <h1 className="gradient-text mono" style={{ fontSize: '3.5rem', marginBottom: '1rem', lineHeight: 1 }}>{content.title}</h1>
-                    <p style={{ color: 'var(--text-dim)', fontSize: '1.2rem', maxWidth: '600px', marginBottom: '2rem' }}>{content.body}</p>
+                    <h1 className="gradient-text mono" style={{ fontSize: 'var(--title-size)', marginBottom: '1rem', lineHeight: 1 }}>{content.title}</h1>
+                    <p style={{ color: 'var(--text-dim)', fontSize: 'var(--body-size)', maxWidth: '600px', marginBottom: '2rem' }}>{content.body}</p>
                     <motion.div 
                         animate={{ opacity: [0.4, 1, 0.4] }} 
                         transition={{ repeat: Infinity, duration: 2 }}
@@ -107,10 +119,10 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                   </div>
               </div>
           ) : isFinale ? (
-            <div className="mono" style={{ color: 'white', textShadow: '0 0 20px var(--primary)' }}>
-                <h1 style={{ fontSize: '3rem', letterSpacing: '10px', marginBottom: '2rem' }}>{content.title}</h1>
-                <p style={{ fontSize: '1.2rem', opacity: 0.8, whiteSpace: 'pre-line' }}>{content.body}</p>
-                <div style={{ marginTop: '3rem', fontSize: '0.8rem', opacity: 0.5 }}>
+            <div className="mono" style={{ color: 'white', textShadow: '0 0 20px var(--primary)', padding: '0 10%' }}>
+                <h1 style={{ fontSize: 'var(--title-size)', letterSpacing: 'clamp(4px, 2vw, 10px)', marginBottom: '2rem' }}>{content.title}</h1>
+                <p style={{ fontSize: 'var(--body-size)', opacity: 0.8, whiteSpace: 'pre-line' }}>{content.body}</p>
+                <div style={{ marginTop: '3rem', fontSize: '0.7rem', opacity: 0.5 }}>
                     CREATED BY LUCAS FRISCHEISEN • 2026<br/>
                     THANKS FOR VISITING THE ECOSYSTEM
                 </div>

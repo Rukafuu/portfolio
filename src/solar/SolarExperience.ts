@@ -106,7 +106,17 @@ export class SolarExperience {
   private onResize = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    this.camera.aspect = width / height;
+    const aspect = width / height;
+    
+    this.camera.aspect = aspect;
+    
+    // Dynamic FOV for mobile portrait to prevent "zoom-in" effect
+    if (aspect < 1) {
+        this.camera.fov = 65; // Wider FOV for portrait
+    } else {
+        this.camera.fov = 45; // Standard FOV for landscape
+    }
+    
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
     this.composer.setSize(width, height);
