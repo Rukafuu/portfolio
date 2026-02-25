@@ -222,32 +222,29 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
               {isLanguage && (
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.8rem' }}>
                       {LANGUAGES.map(lang => (
-                          <motion.button
-                            key={lang.code}
-                            whileHover={{ scale: 1.05, borderColor: 'var(--primary)' }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => handleLangChange(lang.code)}
-                            className="mono"
-                            style={{
-                                background: i18n.language === lang.code ? 'var(--primary)' : 'rgba(0, 242, 254, 0.05)',
-                                color: i18n.language === lang.code ? 'black' : 'var(--primary)',
-                                border: `1px solid ${i18n.language === lang.code ? 'var(--primary)' : 'rgba(0, 242, 254, 0.2)'}`,
-                                padding: '15px',
-                                cursor: 'pointer',
-                                textAlign: 'left',
-                                display: 'flex',
-                                position: 'relative',
-                                overflow: 'hidden'
-                            }}
-                          >
-                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                            <motion.button
+                              key={lang.code}
+                              whileHover={{ scale: 1.05, borderColor: 'var(--primary)' }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={() => handleLangChange(lang.code)}
+                              className="mono"
+                              style={{
+                                  background: i18n.language === lang.code ? 'var(--primary)' : 'rgba(0, 242, 254, 0.05)',
+                                  color: i18n.language === lang.code ? 'black' : 'var(--primary)',
+                                  border: `1px solid ${i18n.language === lang.code ? 'var(--primary)' : 'rgba(0, 242, 254, 0.2)'}`,
+                                  padding: '15px',
+                                  cursor: 'pointer',
+                                  textAlign: 'left',
+                                  display: 'flex',
+                                  position: 'relative',
+                                  overflow: 'hidden'
+                              }}
+                            >
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <span style={{ fontSize: 'var(--body-size)', fontWeight: 'bold' }}>{lang.label}</span>
                                     <span style={{ fontSize: '0.6rem', opacity: 0.6, marginTop: '2px' }}>{lang.native}</span>
                                 </div>
-                                <span style={{ fontSize: '1.5rem' }}>{lang.flag}</span>
-                              </div>
-                          </motion.button>
+                            </motion.button>
                       ))}
                   </div>
               )}

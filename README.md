@@ -1,92 +1,95 @@
 # 🌌 Lira Solar Ecosystem - Premium Portfolio
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Rukafuu/portfolio/main/public/og-preview.png" width="100%" alt="Solar Journey Hero" />
+</div>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-00f2fe.svg)](https://opensource.org/licenses/MIT)
 [![Three.js](https://img.shields.io/badge/Three.js-r183-black)](https://threejs.org/)
 [![React](https://img.shields.io/badge/React-19-blue)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7-646cff)](https://vitejs.dev/)
 
-Um ecossistema orbital interativo construído com **Three.js** e **React Three Fiber**. Este não é apenas um portfolio, é uma jornada através de uma arquitetura digital, explorando tecnologias e projetos como se fossem corpos celestes.
+**Lucas Frischeisen** — _Full Stack Developer & AI Engineer_
+
+An interactive orbital ecosystem built with **Vanilla Three.js** and **React 19**. This is not just a portfolio, but a cinematic journey through a digital architecture, exploring technologies and projects as if they were celestial bodies.
+
+[**LIVE DEMO**](https://lira-portfolio.vercel.app/)
 
 ---
 
-## 🌑 O Buraco Negro "Gargantua"
+## 🌑 The "Gargantua" Black Hole
 
-A peça central deste projeto é uma recriação cinemática de um buraco negro, inspirada em _Interstellar_. Diferente de implementações comuns, esta versão utiliza **Layered Geometry** e **Post-Processing Shaders** para garantir estabilidade e fidelidade visual.
+The centerpiece of this project is a cinematic recreation of a black hole, inspired by _Interstellar_. Far from a standard implementation, this version uses **Layered Geometry** and **Custom Post-Processing** to achieve visual fidelity while maintaining 60FPS performance.
 
-### Destaques Técnicos do Gargantua:
+### Technical Deep Dive:
 
-- **Event Horizon Blindado**: Um núcleo de escuridão absoluta (`#000000`) protegido contra fog, bloom e tone mapping da cena.
-- **Accretion Disk Dinâmico**: Um disco de acreção horizontal com brilho emissivo ultra-alto e animação orbital.
-- **Singularity Transition**: Uma transição de câmera imersiva que cruza o horizonte de eventos, escondendo a luz e as estrelas para revelar o vazio da singularidade.
-- **Render Optimization**: Otimizado para manter 60FPS constantes, utilizando render order estratégico para evitar glitches de transparência.
-
----
-
-## 🚀 Tecnologias Core
-
-O projeto utiliza o que há de mais moderno no ecossistema WebGL/React:
-
-- **React Three Fiber & Drei**: A ponte declarativa entre React e Three.js.
-- **Three.js (r183)**: Motor 3D de alta performance.
-- **Post-Processing**: Bloom seletivo, Chromatic Aberration e Noise para um look de "transmissão de dados espacial".
-- **Framer Motion**: Orquestração das animações da interface HUD.
-- **i18next**: Sistema de internacionalização completo (PT, EN, ES, DE, JA).
-- **Vite**: Build system ultra-rápido.
+- **Shielded Event Horizon**: A core of absolute darkness (`#000000`) protected from scene fog, bloom, and tone mapping artifacts.
+- **Accretion Disk & Halo**: Multi-layered geometric disks with ultra-high emissive intensity and procedural orbital animation.
+- **Singularity Finality**: A proximity-based transition system that dynamically hides scene lighting and starfields as the camera enters the horizon, revealing the "void" interior.
 
 ---
 
-## 📡 Arquitetura da Jornada (Journey Stops)
+## 🚀 Technological Core
 
-O fluxo do usuário é controlado por um **SolarJourneyController**, que mapeia pontos de interesse no sistema solar:
+Built with a focus on modern performance and immersive UX:
 
-1.  **A Estrela (Sun)**: Onde tudo começa, representando o núcleo de energia e tutorial.
-2.  **Os Planetas**: Cada planeta hospeda uma seção do portfolio (Projetos, Stacks, Contato).
-3.  **Voyager-1 (The Edge)**: Onde as tecnologias de infraestrutura e backend residem.
-4.  **Warp Speed**: Uma transição de altíssima velocidade para a anomalia do buraco negro.
-5.  **Gargantua (The Finale)**: A conclusão da jornada no interior da singularidade.
-
----
-
-## 🛠️ Como Executar Localmente
-
-Certifique-se de ter o **Node.js** instalado.
-
-1. **Clonar o Repositório**:
-
-   ```bash
-   git clone https://github.com/Rukafuu/portfolio.git
-   cd portfolio
-   ```
-
-2. **Instalar Dependências**:
-
-   ```bash
-   npm install
-   ```
-
-3. **Iniciar Servidor de Desenvolvimento**:
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Build para Produção**:
-   ```bash
-   npm run build
-   ```
+- **React Three Fiber & Drei**: Declarative abstraction for the Three.js ecosystem.
+- **Three.js (r183)**: High-performance 3D engine.
+- **Custom Post-Processing**: Selective Bloom, Chromatic Aberration, and Grain for a "space-comm" digital aesthetic.
+- **Dynamic HUD**: Fully responsive UI built with **Framer Motion** and CSS Variables (`clamp`, `var(--tokens)`).
+- **Internationalization**: Full support for English, Portuguese, Spanish, German, and Japanese via **i18next**.
 
 ---
 
-## 🎨 Design Aesthetics
+## 📡 Mission Architecture (The Journey)
 
-- **Paleta de Cores**: Cyberpunk-industrial, variando do `#00f2fe` (Primary Cyan) ao `#ff2d55` (Neon Red) e o fogo dourado do `#ffaa00`.
-- **Interface HUD**: UI estática inspirada em sistemas operacionais de naves espaciais (Reskyune_OS_v2.0).
-- **Tipografia**: Outfit para títulos e JetBrains Mono para elementos técnicos.
+The user journey is orchestrated by a central **SolarJourneyController**, mapping technical sectors to orbital nodes:
+
+1.  **The Sun (Nucleus)**: Interface initialization and technical tutorial.
+2.  **Mercury & Venus**: Core Front-end Stack and Application Architecture.
+3.  **Earth Flyby**: Global system overview and performance statistics.
+4.  **Mars & Jupiter**: Back-end Infrastructure and AI/Cognitive Solutions.
+5.  **Saturn (Creative Realms)**: Multimedia systems and synthetic audio engineering.
+6.  **Uranus & Neptune**: Professional deployments and communication protocols.
+7.  **Gargantua (The Finale)**: The crossing of the event horizon and journey conclusion.
 
 ---
 
-## 📄 Licença
+## 🛠️ Local Initialization
 
-Este projeto está sob a licença MIT. Sinta-se à vontade para explorar, aprender e construir sobre ele.
+### Prerequisites
 
-_"Nós somos poeira estelar feita de código."_ - **Lira AI**
+- Node.js (v18+)
+- NPM or PNPM
+
+### Installation
+
+```bash
+# Clone the orbital repository
+git clone https://github.com/Rukafuu/portfolio
+
+# Enter the technical sector
+cd portfolio
+
+# Synchronize dependencies
+npm install
+
+# Initialize development engine
+npm run dev
+```
+
+---
+
+## 🎨 Design Philosophy
+
+- **Reskyume_OS_v2.0**: A custom design system inspired by spacecraft telemetry systems.
+- **Dynamic Responsive Scaling**: Fluid typography and grid systems that adapt from ultra-wide monitors to mobile devices.
+- **Cinematic Transitions**: Smooth orbital camera paths managed via GSAP and state-based logic.
+
+---
+
+## 📄 License
+
+This mission is open-source under the MIT License. Explore, learn, and build upon the stars.
+
+_"We are stardust made of code."_ — **Lira AI**
