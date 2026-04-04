@@ -302,45 +302,44 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                 </div>
               )}
 
-              {isUranus && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem' }}>
-                  <a
-                    href={i18n.language === 'pt' ? '/resume_pt.pdf' : '/resume_en.pdf'}
-                    download="Resume_Lucas_Frischeisen.pdf"
-                    className="hover-link mono"
-                    style={{
-                      color: 'var(--primary)',
-                      textDecoration: 'none',
-                      fontSize: '0.8rem',
-                      border: '1px solid var(--primary)',
-                      padding: '10px 20px',
-                      background: 'rgba(0, 242, 254, 0.08)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <FileDown size={16} /> DOWNLOAD RESUME
-                  </a>
-                  <a
-                    href="mailto:lucas.frischeisen@gmail.com"
-                    className="hover-link mono"
-                    style={{
-                      color: 'var(--accent)',
-                      textDecoration: 'none',
-                      fontSize: '0.8rem',
-                      border: '1px solid var(--accent)',
-                      padding: '10px 20px',
-                      background: 'rgba(255, 45, 85, 0.08)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <Mail size={16} /> SEND_EMAIL
-                  </a>
-                </div>
-              )}
+              {isUranus && (() => {
+                const MAIL_SUBJECT = encodeURIComponent("Hi Lucas — Let's Connect");
+                const MAIL_BODY = encodeURIComponent('Hello Lucas,\n\nI came across your portfolio and would love to connect.\n\n');
+                const mailHref = `mailto:lucas.frischeisen@gmail.com?subject=${MAIL_SUBJECT}&body=${MAIL_BODY}`;
+                return (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '2rem' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                      <a
+                        href={i18n.language === 'pt' ? '/resume_pt.pdf' : '/resume_en.pdf'}
+                        download="Resume_Lucas_Frischeisen.pdf"
+                        className="hover-link mono"
+                        style={{ color: 'var(--primary)', textDecoration: 'none', fontSize: '0.8rem', border: '1px solid var(--primary)', padding: '10px 20px', background: 'rgba(0, 242, 254, 0.08)', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                      >
+                        <FileDown size={16} /> DOWNLOAD RESUME
+                      </a>
+                      <a
+                        href={mailHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover-link mono"
+                        style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: '0.8rem', border: '1px solid var(--accent)', padding: '10px 20px', background: 'rgba(255, 45, 85, 0.08)', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                      >
+                        <Mail size={16} /> SEND_EMAIL
+                      </a>
+                    </div>
+                    <div
+                      className="mono"
+                      onClick={() => navigator.clipboard?.writeText('lucas.frischeisen@gmail.com')}
+                      style={{ fontSize: '0.65rem', color: 'var(--text-dim)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', opacity: 0.7, transition: '0.2s' }}
+                      onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+                      onMouseLeave={e => (e.currentTarget.style.opacity = '0.7')}
+                      title="Click to copy"
+                    >
+                      {'> '}lucas.frischeisen@gmail.com {'[ CLICK TO COPY ]'}
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           )}
         </motion.div>
