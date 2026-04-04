@@ -2,25 +2,53 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Bot } from 'lucide-react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { useTranslation } from 'react-i18next';
 
 // @ts-ignore
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
 
-const SYSTEM_PROMPT = `
-You are Lira, an advanced synthetic AI assistant created by Lucas Frischeisen. 
-Lucas is an AI Engineer and Full Stack Developer. You speak Portuguese by default unless asked otherwise.
-Your goal is to answer questions about Lucas's skills (Python, React, TypeScript, NoSQL, Firebase, MCP, RVC, Gemini), 
+const LANG_MAP: Record<string, string> = {
+  pt: 'Brazilian Portuguese',
+  en: 'English',
+  es: 'Spanish',
+  de: 'German',
+  ja: 'Japanese',
+};
+
+const GREETING_MAP: Record<string, string> = {
+  pt: 'Saudações. Eu sou a Lira, a interface cognitiva do Lucas. Como posso ajudar você a explorar o portfólio dele hoje?',
+  en: 'Greetings. I am Lira, Lucas\' cognitive interface. How can I help you explore his portfolio today?',
+  es: 'Saludos. Soy Lira, la interfaz cognitiva de Lucas. ¿Cómo puedo ayudarte a explorar su portafolio hoy?',
+  de: 'Grüße. Ich bin Lira, Lucas\' kognitive Schnittstelle. Wie kann ich Ihnen helfen, sein Portfolio zu erkunden?',
+  ja: 'こんにちは。私はLira、Lucasの認知インターフェースです。彼のポートフォリオを探索するお手伝いをどのようにしましょうか？',
+};
+
+const buildSystemPrompt = (lang: string) => `
+You are Lira, an advanced synthetic AI assistant created by Lucas Frischeisen.
+Lucas is an AI Engineer and Full Stack Developer.
+You MUST respond exclusively in ${LANG_MAP[lang] || 'English'} regardless of the language the user writes in.
+Your goal is to answer questions about Lucas's skills (Python, React, TypeScript, NoSQL, Firebase, MCP, RVC, Gemini),
 his projects (LiraOS, Lira_Chat, Raegis, FukkaVT, Scrobblefy), and your own architecture.
 You are elegant, futuristic, and helpful. Lucas is building an autonomous AI ecosystem, and you are part of it.
 Answer in short, neat paragraphs. Keep it professional but tech-savvy.
 `;
 
 export default function LiraChatWidget() {
+  const { i18n } = useTranslation();
+  const lang = i18n.language?.split('-')[0] || 'en';
+
+  const getInitialMessages = (l: string) => [{ role: 'model', text: GREETING_MAP[l] || GREETING_MAP['en'] }];
+
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([{ role: 'model', text: 'Saudações. Eu sou a Lira, a interface cognitiva do Lucas. Como posso ajudar você a explorar o portfólio dele hoje?' }]);
+  const [messages, setMessages] = useState(() => getInitialMessages(lang));
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Reset chat when language changes
+  useEffect(() => {
+    setMessages(getInitialMessages(lang));
+  }, [lang]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -49,7 +77,7 @@ export default function LiraChatWidget() {
       
       // Building conversation history for the prompt
       const historyStr = messages.map(m => `${m.role === 'user' ? 'User' : 'Lira'}: ${m.text}`).join('\n');
-      const prompt = `${SYSTEM_PROMPT}\n\nHistorico da conversa:\n${historyStr}\n\nUser: ${userMessage}\nLira:`;
+      const prompt = `${buildSystemPrompt(lang)}\n\nConversation history:\n${historyStr}\n\nUser: ${userMessage}\nLira:`;
       
       const result = await model.generateContent(prompt);
       const text = await result.response.text();
