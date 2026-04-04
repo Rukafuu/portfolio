@@ -45,7 +45,7 @@ export default function LiraChatWidget() {
 
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
       
       // Building conversation history for the prompt
       const historyStr = messages.map(m => `${m.role === 'user' ? 'User' : 'Lira'}: ${m.text}`).join('\n');
