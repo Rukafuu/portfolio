@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
-import { Github, Linkedin, ExternalLink } from 'lucide-react'
+import { Github, Linkedin, ExternalLink, FileDown, Mail } from 'lucide-react'
 // @ts-ignore
 import profilePic from '../assets/eu.png'
+import LiraChatWidget from './LiraChatWidget'
 
 interface SectionProps {
   children: React.ReactNode;
@@ -97,7 +98,7 @@ const ProjectCard = ({ title, description, link, tech, repo }: ProjectCardProps)
 )
 
 export default function Overlay() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   return (
     <div className="overlay">
@@ -246,6 +247,31 @@ export default function Overlay() {
           />
         </div>
       </Section>
+
+      {/* CONTACT SECTION */}
+      <Section id="contact">
+        <h2 className="gradient-text mono" style={{ fontSize: 'calc(var(--title-size, 2.5rem) * 0.8)', marginBottom: '2rem', textAlign: 'center' }}>
+          {t('uranus.title')}
+        </h2>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+          <p style={{ color: 'var(--text-dim)', textAlign: 'center', maxWidth: '600px', lineHeight: '1.6' }}>
+            {t('uranus.body')}
+          </p>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.5rem', justifyContent: 'center' }}>
+            <a href={i18n.language === 'pt' ? '/resume_pt.pdf' : '/resume_en.pdf'} download="Resume_Lucas_Frischeisen.pdf" className="hud-card mono hover-link" style={{ padding: '1rem 2rem', textDecoration: 'none', color: 'white', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid var(--primary)', borderRadius: '4px', clipPath: 'none' }}>
+              <FileDown size={20} color="var(--primary)" /> DOWNLOAD RESUME
+            </a>
+            
+            <a href="mailto:lucas.frischeisen@gmail.com" className="hud-card mono hover-link" style={{ padding: '1rem 2rem', textDecoration: 'none', color: 'white', display: 'flex', alignItems: 'center', gap: '10px', border: '1px solid var(--accent)', borderRadius: '4px', clipPath: 'none' }}>
+              <Mail size={20} color="var(--accent)" /> SEND EMAIL
+            </a>
+          </div>
+        </div>
+      </Section>
+
+      <LiraChatWidget />
 
       {/* FOOTER */}
       <footer style={{ 
