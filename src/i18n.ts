@@ -47,7 +47,7 @@ const resources = {
         mars: {
           title: "BACK-END & INFRA",
           body: "Scalable infrastructure and logic layers. Orchestrating data flow and secure communication protocols.",
-          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase"],
+          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase", "Firebase/NoSQL"],
           cards: [
             { title: "RVC Inference", description: "High-performance voice cloning API with GPU acceleration." },
             { title: "Distributed Systems", description: "Design of load-balanced microservices for AI task processing." }
@@ -59,13 +59,15 @@ const resources = {
           tech: ["Gemini 1.5 Pro", "LangChain", "Vector Databases", "Prompt Engineering"],
           cards: [
             { title: "LiraOS Core", description: "Humanized AI interface and autonomous memory systems." },
-            { title: "Lira_Chat", description: "Intelligent minimalist chat interface with deep AI integration." }
+            { title: "Lira_Chat", description: "Intelligent minimalist chat interface with deep AI integration." },
+            { title: "Raegis", description: "MLOps observability platform and AI behavioral diagnostics." }
           ],
           links: [
               { label: "REPO_LIRAOS", url: "https://github.com/Rukafuu/LiraOS" },
               { label: "LIVE_LIRAOS", url: "https://liraos.xyz/" },
               { label: "REPO_LIRACHAT", url: "https://github.com/Rukafuu/lirachat" },
-              { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" }
+              { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" },
+              { label: "REPO_RAEGIS", url: "https://github.com/Rukafuu/Raegis" }
           ]
         },
         saturn: {
@@ -74,13 +76,15 @@ const resources = {
           tech: ["Web Audio API", "SASS", "Gulp", "Procedural Geometry"],
           cards: [
               { title: "FukkaVT Infrastructure", description: "Advanced VTuber system with real-time voice conversion." },
-              { title: "Dev_Dashboard", description: "Real-time cognitive telemetry monitoring and memory logs." }
+              { title: "Dev_Dashboard", description: "Real-time cognitive telemetry monitoring and memory logs." },
+              { title: "Scrobblefy", description: "AI-powered music discovery dashboard for Spotify and Last.fm." }
           ],
           links: [
               { label: "REPO_FUKKAVT", url: "https://github.com/Rukafuu/FukkaVT" },
               { label: "LIVE_FUKKAVT", url: "https://fukka-vtuber.vercel.app/" },
               { label: "REPO_DASHBOARD", url: "https://github.com/Rukafuu/lira-developer-dashboard" },
-              { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" }
+              { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" },
+              { label: "REPO_SCROBBLEFY", url: "https://github.com/Rukafuu/scrobblefy" }
           ]
         },
         uranus: {
@@ -104,7 +108,7 @@ const resources = {
           body: "\"The dream is not simply to build machines that think, but to build experiences that feel. We are stardust made of code.\"",
           stacks: {
               front: ["React", "Vue", "Three.js", "Vite", "HTML/CSS", "TypeScript"],
-              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL"],
+              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL", "Firebase/NoSQL"],
               infra: ["Cloud", "GCP", "Architecture"]
           }
         },
@@ -159,7 +163,7 @@ const resources = {
         mars: {
           title: "BACK-END e INFRA",
           body: "Infraestrutura escalável e camadas de lógica. Orquestrando o fluxo de dados e protocolos de comunicação seguros.",
-          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase"],
+          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase", "Firebase/NoSQL"],
           cards: [
             { title: "RVC Inference", description: "API de clonagem de voz de alta performance com aceleração por GPU." },
             { title: "Sistemas Distribuídos", description: "Design de microsserviços com balanceamento de carga para processamento de tarefas de IA." }
@@ -171,13 +175,15 @@ const resources = {
           tech: ["Gemini 1.5 Pro", "LangChain", "Bancos de Dados Vetoriais", "Engenharia de Prompt"],
           cards: [
             { title: "LiraOS Core", description: "Interface de IA humanizada e sistemas de memória autônoma." },
-            { title: "Lira_Chat", description: "Interface de chat inteligente e minimalista com integração profunda de IA." }
+            { title: "Lira_Chat", description: "Interface de chat inteligente e minimalista com integração profunda de IA." },
+            { title: "Raegis", description: "Plataforma de observabilidade MLOps e diagnósticos comportamentais de IA." }
           ],
           links: [
               { label: "REPO_LIRAOS", url: "https://github.com/Rukafuu/LiraOS" },
               { label: "LIVE_LIRAOS", url: "https://liraos.xyz/" },
               { label: "REPO_LIRACHAT", url: "https://github.com/Rukafuu/lirachat" },
-              { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" }
+              { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" },
+              { label: "REPO_RAEGIS", url: "https://github.com/Rukafuu/Raegis" }
           ]
         },
         saturn: {
@@ -186,13 +192,15 @@ const resources = {
           tech: ["Web Audio API", "SASS", "Gulp", "Geometria Procedural"],
           cards: [
               { title: "Infra FukkaVT", description: "Sistema VTuber avançado com conversão de voz em tempo real." },
-              { title: "Dev_Dashboard", description: "Monitoramento de telemetria cognitiva e logs de memória em tempo real." }
+              { title: "Dev_Dashboard", description: "Monitoramento de telemetria cognitiva e logs de memória em tempo real." },
+              { title: "Scrobblefy", description: "Dashboard de descoberta musical com IA focado em Spotify e Last.fm." }
           ],
           links: [
               { label: "REPO_FUKKAVT", url: "https://github.com/Rukafuu/FukkaVT" },
               { label: "LIVE_FUKKAVT", url: "https://fukka-vtuber.vercel.app/" },
               { label: "REPO_DASHBOARD", url: "https://github.com/Rukafuu/lira-developer-dashboard" },
-              { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" }
+              { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" },
+              { label: "REPO_SCROBBLEFY", url: "https://github.com/Rukafuu/scrobblefy" }
           ]
         },
         uranus: {
@@ -216,7 +224,7 @@ const resources = {
           body: "\"O sonho não é apenas construir máquinas que pensam, mas construir experiências que sentem. Somos poeira estelar feita de código.\"",
           stacks: {
               front: ["React", "Vue", "Three.js", "Vite", "HTML/CSS", "TypeScript"],
-              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL"],
+              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL", "Firebase/NoSQL"],
               infra: ["Cloud", "GCP", "Architecture"]
           }
         },
@@ -271,7 +279,7 @@ const resources = {
         mars: {
           title: "BACK-END e INFRA",
           body: "Infraestructura escalable y capas de lógica. Orquestando el flujo de datos y protocolos de comunicación seguros.",
-          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase"],
+          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase", "Firebase/NoSQL"],
           cards: [
             { title: "RVC Inference", description: "API de clonación de voz de alto rendimiento con aceleración por GPU." },
             { title: "Sistemas Distribuidos", description: "Diseño de microservicios con balance de carga para tareas de IA." }
@@ -283,13 +291,15 @@ const resources = {
           tech: ["Gemini 1.5 Pro", "LangChain", "Bases de Datos Vectoriales", "Prompt Engineering"],
           cards: [
             { title: "LiraOS Core", description: "Interfaz de IA humanizada e sistemas de memória autónoma." },
-            { title: "Lira_Chat", description: "Interfaz de chat inteligente y minimalista con integración profunda de IA." }
+            { title: "Lira_Chat", description: "Interfaz de chat inteligente y minimalista con integración profunda de IA." },
+            { title: "Raegis", description: "Plataforma de observabilidad MLOps y diagnósticos conductuales de IA." }
           ],
           links: [
               { label: "REPO_LIRAOS", url: "https://github.com/Rukafuu/LiraOS" },
               { label: "LIVE_LIRAOS", url: "https://liraos.xyz/" },
               { label: "REPO_LIRACHAT", url: "https://github.com/Rukafuu/lirachat" },
-              { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" }
+              { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" },
+              { label: "REPO_RAEGIS", url: "https://github.com/Rukafuu/Raegis" }
           ]
         },
         saturn: {
@@ -298,13 +308,15 @@ const resources = {
           tech: ["Web Audio API", "SASS", "Gulp", "Geometría Procedural"],
           cards: [
               { title: "Infra FukkaVT", description: "Sistema VTuber avanzado con conversión de voz en tiempo real." },
-              { title: "Dev_Dashboard", description: "Monitoreo de telemetría cognitiva y logs de memoria en tiempo real." }
+              { title: "Dev_Dashboard", description: "Monitoreo de telemetría cognitiva y logs de memoria en tiempo real." },
+              { title: "Scrobblefy", description: "Dashboard de descubrimiento musical con IA enfocado en Spotify y Last.fm." }
           ],
           links: [
               { label: "REPO_FUKKAVT", url: "https://github.com/Rukafuu/FukkaVT" },
               { label: "LIVE_FUKKAVT", url: "https://fukka-vtuber.vercel.app/" },
               { label: "REPO_DASHBOARD", url: "https://github.com/Rukafuu/lira-developer-dashboard" },
-              { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" }
+              { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" },
+              { label: "REPO_SCROBBLEFY", url: "https://github.com/Rukafuu/scrobblefy" }
           ]
         },
         uranus: {
@@ -328,7 +340,7 @@ const resources = {
           body: "\"El sueño no es simplemente construir máquinas que piensen, sino construir experiencias que sientan. Somos polvo de estrellas hecho de código.\"",
           stacks: {
               front: ["React", "Vue", "Three.js", "Vite", "HTML/CSS", "TypeScript"],
-              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL"],
+              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL", "Firebase/NoSQL"],
               infra: ["Cloud", "GCP", "Architecture"]
           }
         },
@@ -383,7 +395,7 @@ const resources = {
         mars: {
           title: "BACK-END & INFRA",
           body: "Skalierbare Infrastruktur und Logikebenen. Orchestrierung von Datenflüssen und Sicherheitsprotokollen.",
-          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase"],
+          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase", "Firebase/NoSQL"],
           cards: [
             { title: "RVC Inference", description: "Hochleistungs-Stimmklon-API mit GPU-Beschleunigung." },
             { title: "Verteilte Systeme", description: "Design von lastverteilten Microservices für KI-Aufgaben." }
@@ -395,13 +407,15 @@ const resources = {
           tech: ["Gemini 1.5 Pro", "LangChain", "Vektordatenbanken", "Prompt Engineering"],
           cards: [
             { title: "LiraOS Core", description: "Humanisierte KI-Schnittstelle und autonome Gedächtnissysteme." },
-            { title: "Lira_Chat", description: "Intelligente, minimalistische Chat-Schnittstelle mit tiefer KI-Integration." }
+            { title: "Lira_Chat", description: "Intelligente, minimalistische Chat-Schnittstelle mit tiefer KI-Integration." },
+            { title: "Raegis", description: "MLOps-Beobachtungsplattform und KI-Verhaltensdiagnostik." }
           ],
           links: [
             { label: "REPO_LIRAOS", url: "https://github.com/Rukafuu/LiraOS" },
             { label: "LIVE_LIRAOS", url: "https://liraos.xyz/" },
             { label: "REPO_LIRACHAT", url: "https://github.com/Rukafuu/lirachat" },
-            { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" }
+            { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" },
+            { label: "REPO_RAEGIS", url: "https://github.com/Rukafuu/Raegis" }
           ]
         },
         saturn: {
@@ -410,13 +424,15 @@ const resources = {
           tech: ["Web Audio API", "SASS", "Gulp", "Procedural Geometry"],
           cards: [
               { title: "FukkaVT Infra", description: "Erweitertes VTuber-System mit Echtzeit-Stimmumwandlung." },
-              { title: "Dev_Dashboard", description: "Echtzeit-Telemetrieüberwachung und Gedächtnisprotokolle." }
+              { title: "Dev_Dashboard", description: "Echtzeit-Telemetrieüberwachung und Gedächtnisprotokolle." },
+              { title: "Scrobblefy", description: "KI-gestütztes Musik-Dashboard für Spotify und Last.fm." }
           ],
           links: [
             { label: "REPO_FUKKAVT", url: "https://github.com/Rukafuu/FukkaVT" },
             { label: "LIVE_FUKKAVT", url: "https://fukka-vtuber.vercel.app/" },
             { label: "REPO_DASHBOARD", url: "https://github.com/Rukafuu/lira-developer-dashboard" },
-            { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" }
+            { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" },
+            { label: "REPO_SCROBBLEFY", url: "https://github.com/Rukafuu/scrobblefy" }
           ]
         },
         uranus: {
@@ -440,7 +456,7 @@ const resources = {
           body: "\"Der Traum ist nicht nur, denkende Maschinen zu bauen, sondern Erlebnisse, die man fühlt. Wir sind Sternenstaub aus Code.\"",
           stacks: {
               front: ["React", "Vue", "Three.js", "Vite", "HTML/CSS", "TypeScript"],
-              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL"],
+              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL", "Firebase/NoSQL"],
               infra: ["Cloud", "GCP", "Architecture"]
           }
         },
@@ -495,7 +511,7 @@ const resources = {
         mars: {
           title: "バックエンド ＆ インフラ",
           body: "スケーラブルなインフラストラクチャとロジック層。データフローと安全な通信プロトコルのオーケストレーション。",
-          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase"],
+          tech: ["Python", "Go", "Docker", "PostgreSQL", "Supabase", "Firebase/NoSQL"],
           cards: [
             { title: "RVC Inference", description: "GPU加速による高性能音声クローニングAPI。" },
             { title: "Distributed Systems", description: "AIタスク処理のための負荷分散されたマイクロサービス設計。" }
@@ -507,13 +523,15 @@ const resources = {
           tech: ["Gemini 1.5 Pro", "LangChain", "Vector Databases", "Prompt Engineering"],
           cards: [
             { title: "LiraOS Core", description: "擬人化されたAIインターフェースと自律型メモリシステム。" },
-            { title: "Lira_Chat", description: "深いAI統合を備えたインテリジェントでミニマリストなチャットインターフェース。" }
+            { title: "Lira_Chat", description: "深いAI統合を備えたインテリジェントでミニマリストなチャットインターフェース。" },
+            { title: "Raegis", description: "MLOpsオブザーバビリティプラットフォームとAI行動診断。" }
           ],
           links: [
             { label: "REPO_LIRAOS", url: "https://github.com/Rukafuu/LiraOS" },
             { label: "LIVE_LIRAOS", url: "https://liraos.xyz/" },
             { label: "REPO_LIRACHAT", url: "https://github.com/Rukafuu/lirachat" },
-            { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" }
+            { label: "LIVE_LIRACHAT", url: "https://lirachat.vercel.app/" },
+            { label: "REPO_RAEGIS", url: "https://github.com/Rukafuu/Raegis" }
           ]
         },
         saturn: {
@@ -522,13 +540,15 @@ const resources = {
           tech: ["Web Audio API", "SASS", "Gulp", "Procedural Geometry"],
           cards: [
               { title: "FukkaVT インフラ", description: "リアルタイム音声変換を備えた高度なVTuberシステム。" },
-              { title: "Dev_Dashboard", description: "リアルタイムの認知テレメトリ監視とメモリログ。" }
+              { title: "Dev_Dashboard", description: "リアルタイムの認知テレメトリ監視とメモリログ。" },
+              { title: "Scrobblefy", description: "SpotifyとLast.fm向けのAI音楽発見ダッシュボード。" }
           ],
           links: [
             { label: "REPO_FUKKAVT", url: "https://github.com/Rukafuu/FukkaVT" },
             { label: "LIVE_FUKKAVT", url: "https://fukka-vtuber.vercel.app/" },
             { label: "REPO_DASHBOARD", url: "https://github.com/Rukafuu/lira-developer-dashboard" },
-            { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" }
+            { label: "LIVE_DASHBOARD", url: "https://lira-developer-dashboard.vercel.app/" },
+            { label: "REPO_SCROBBLEFY", url: "https://github.com/Rukafuu/scrobblefy" }
           ]
         },
         uranus: {
@@ -552,7 +572,7 @@ const resources = {
           body: "「夢は単に考える機械を作ることではなく、心で感じる体験を作ることです。私たちはコードでできた星屑なのです。」",
           stacks: {
               front: ["React", "Vue", "Three.js", "Vite", "HTML/CSS", "TypeScript"],
-              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL"],
+              back: ["Node.js", "Python", "API Design", "MCP", "PostgreSQL", "Firebase/NoSQL"],
               infra: ["Cloud", "GCP", "Architecture"]
           }
         },

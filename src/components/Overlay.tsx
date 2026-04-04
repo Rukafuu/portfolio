@@ -105,7 +105,7 @@ export default function Overlay() {
       <Section id="home">
         <div style={{ display: 'flex', alignItems: 'center', gap: '4rem', flexWrap: 'wrap' }}>
           <motion.div 
-            style={{ flex: '0 0 280px', height: '350px', position: 'relative' }}
+            style={{ flex: '1 1 280px', maxWidth: '350px', height: '350px', position: 'relative', margin: '0 auto' }}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2 }}
@@ -127,7 +127,7 @@ export default function Overlay() {
             </div>
           </motion.div>
 
-          <div style={{ flex: '1', minWidth: '400px' }}>
+          <div style={{ flex: '1 1 280px', width: '100%' }}>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -139,7 +139,7 @@ export default function Overlay() {
             </motion.div>
             
             <motion.h1 
-              style={{ fontSize: '5rem', lineHeight: '1', marginBottom: '1.5rem', fontWeight: '900' }}
+              style={{ fontSize: 'var(--title-size, 5rem)', lineHeight: '1', marginBottom: '1.5rem', fontWeight: '900' }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -173,9 +173,9 @@ export default function Overlay() {
       {/* BIO SECTION */}
       <Section id="about">
         <div className="hud-card">
-          <h2 className="gradient-text mono" style={{ fontSize: '2rem', marginBottom: '2rem' }}>{t('bio.title')}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '4rem' }}>
-            <div style={{ fontSize: '1rem', color: 'var(--text-dim)', lineHeight: '1.8' }}>
+          <h2 className="gradient-text mono" style={{ fontSize: 'calc(var(--title-size, 2rem) * 0.8)', marginBottom: '2rem' }}>{t('bio.title')}</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
+            <div style={{ fontSize: 'var(--body-size, 1rem)', color: 'var(--text-dim)', lineHeight: '1.8' }}>
               <p style={{ marginBottom: '1.5rem' }}>
                 <span style={{ color: 'var(--primary)' }} className="mono">{"> "}</span>
                 {t('bio.p1')}
@@ -213,9 +213,9 @@ export default function Overlay() {
       </Section>
 
       {/* PROJECTS SECTION */}
-      <Section id="projects" style={{ paddingBottom: '10rem' }}>
-        <h2 className="gradient-text mono" style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>{t('projects.title')}</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+      <Section id="projects" style={{ paddingBottom: '6rem' }}>
+        <h2 className="gradient-text mono" style={{ fontSize: 'calc(var(--title-size, 2.5rem) * 0.8)', marginBottom: '3rem', textAlign: 'center' }}>{t('projects.title')}</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           <ProjectCard 
             title="LiraOS" 
             description={t('projects.liraos')} 
