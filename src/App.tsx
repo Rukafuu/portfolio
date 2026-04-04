@@ -6,6 +6,7 @@ import { AudioUI } from './solar/ui/AudioUI';
 import LoadingScreen from './components/LoadingScreen';
 import StaticHUD from './components/StaticHUD';
 import { useTranslation } from 'react-i18next';
+import LiraChatWidget from './components/LiraChatWidget';
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -56,6 +57,7 @@ export default function App() {
       
       <OverlayUI sectionKey={sectionKey} />
       <AudioUI manager={audioManager.current} />
+      <LiraChatWidget />
 
       {/* Navigation Hint */}
       <div 
