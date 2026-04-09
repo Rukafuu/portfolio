@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, Code2, Monitor, Server, Cloud, FileDown, Mail } from 'lucide-react';
 // @ts-ignore
 import profilePic from '../../assets/eu.png';
+import { useWindowSize, isMobile } from '../../hooks/useWindowSize';
 
 interface OverlayUIProps {
   sectionKey: string;
@@ -19,6 +20,8 @@ const LANGUAGES = [
 
 export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
   const { t, i18n } = useTranslation();
+  const { width } = useWindowSize();
+  const mobile = isMobile(width);
   const isUranus = sectionKey === 'uranus';
 
   if (sectionKey === 'none') return null;
@@ -64,10 +67,10 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
       zIndex: 100,
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: window.innerWidth < 768 ? 'flex-start' : 'center',
+      justifyContent: mobile ? 'flex-start' : 'center',
       alignItems: isFinale ? 'center' : 'flex-start',
       padding: 'var(--hud-padding)',
-      paddingTop: window.innerWidth < 768 ? '80px' : '0'
+      paddingTop: mobile ? '80px' : '0'
     }}>
       <AnimatePresence mode="wait">
         <motion.div
@@ -88,8 +91,8 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                 display: 'flex', 
                 alignItems: 'center', 
                 gap: 'clamp(1.5rem, 5vw, 3rem)', 
-                flexDirection: window.innerWidth < 768 ? 'column' : 'row',
-                textAlign: window.innerWidth < 768 ? 'center' : 'left'
+                flexDirection: mobile ? 'column' : 'row',
+                textAlign: mobile ? 'center' : 'left'
               }}>
                   <motion.div 
                     style={{ 
@@ -97,7 +100,7 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                         height: 'clamp(190px, 40vw, 280px)', 
                         position: 'relative', 
                         border: '1px solid var(--primary)',
-                        margin: window.innerWidth < 768 ? '0 auto' : '0'
+                        margin: mobile ? '0 auto' : '0'
                     }}
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -107,7 +110,7 @@ export const OverlayUI: React.FC<OverlayUIProps> = ({ sectionKey }) => {
                         ID_CORE: 334099538
                       </div>
                   </motion.div>
-                  <div style={{ flex: 1, minWidth: window.innerWidth < 768 ? '100%' : '350px' }}>
+                  <div style={{ flex: 1, minWidth: mobile ? '100%' : '350px' }}>
                     <h2 className="mono" style={{ color: 'var(--accent)', fontSize: '0.8rem', marginBottom: '0.5rem' }}>{content.meta}</h2>
                     <h1 className="gradient-text mono" style={{ fontSize: 'var(--title-size)', marginBottom: '1rem', lineHeight: 1 }}>{content.title}</h1>
                     <p style={{ color: 'var(--text-dim)', fontSize: 'var(--body-size)', maxWidth: '600px', marginBottom: '2rem' }}>{content.body}</p>

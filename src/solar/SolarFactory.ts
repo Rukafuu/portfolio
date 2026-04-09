@@ -124,59 +124,132 @@ export class SolarFactory {
     return orbitGroup;
   }
 
-  /**
-   * Cinematic Layered Black Hole (Gargantua Restored)
-   * Restores the core sphere void with proper depth sorting.
-   */
   private createBlackHole() {
     const group = new THREE.Group();
     group.name = 'Gargantua';
-    
-    // 1. Event Horizon (The Core Void) - BLINDADO
-    const ehMat = new THREE.MeshBasicMaterial({ 
-        color: 0x000000,
-        fog: false, 
-        toneMapped: false,
-        side: THREE.DoubleSide // Permite que a câmera veja o vazio por dentro ao entrar no buraco negro
-    });
-    
+
+    // 1. Event Horizon — pure void sphere
     const eh = new THREE.Mesh(
-        new THREE.SphereGeometry(18.2, 64, 64),
-        ehMat
+      new THREE.SphereGeometry(18, 64, 64),
+      new THREE.MeshBasicMaterial({ color: 0x000000, fog: false, toneMapped: false })
     );
     eh.name = 'eventHorizon';
-    eh.renderOrder = 999; 
+    eh.renderOrder = 999;
     group.add(eh);
 
-    // 2. Main Accretion Disk (The Fire Ring)
-    const diskGeom = new THREE.RingGeometry(18, 62, 128);
-    const diskMat = new THREE.MeshStandardMaterial({
-        color: '#ffaa00',
-        emissive: '#ff7700',
-        emissiveIntensity: 15,
-        side: THREE.DoubleSide,
+    // 2. Photon sphere — thin bright ring just outside event horizon
+    const photonRing = new THREE.Mesh(
+      new THREE.TorusGeometry(20.5, 1.0, 16, 128),
+      new THREE.MeshBasicMaterial({
+        color: new THREE.Color(3.0, 2.5, 1.5),
         transparent: true,
-        opacity: 0.9,
+        opacity: 0.85,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      })
+    );
+    photonRing.rotation.x = Math.PI / 2;
+    photonRing.name = 'photonRing';
+    group.add(photonRing);
+
+    // Shared disk shaders
+    const diskVert = `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `;
+    const diskFrag = `
+      uniform float uTime;
+      uniform float uOpacityMult;
+      varying vec2 vUv;
+
+      float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+      float noise(vec2 p) {
+        vec2 i = floor(p); vec2 f = fract(p);
+        f = f*f*(3.0-2.0*f);
+        return mix(mix(hash(i), hash(i+vec2(1,0)), f.x),
+                   mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), f.x), f.y);
+      }
+
+      void main() {
+        float r = vUv.x;
+        float t = uTime * 0.25;
+        vec2 nc = vec2(r * 5.0 + t, vUv.y * 20.0 - t * 2.0);
+        float n = noise(nc)*0.5 + noise(nc*2.1+0.7)*0.3 + noise(nc*4.3-0.3)*0.2;
+
+        // Temperature gradient: white-hot inner → orange → dim red outer
+        vec3 c1 = vec3(1.0, 0.97, 0.82);
+        vec3 c2 = vec3(1.0, 0.50, 0.04);
+        vec3 c3 = vec3(0.60, 0.09, 0.01);
+        vec3 color = r < 0.35 ? mix(c1, c2, r/0.35) : mix(c2, c3, (r-0.35)/0.65);
+        color += n * 0.25 * vec3(1.0, 0.5, 0.1);
+
+        float alpha = (1.0-smoothstep(0.78,1.0,r)) * smoothstep(0.0,0.07,r) * (0.55+n*0.45);
+        float emissive = 4.0 + n * 3.0;
+
+        gl_FragColor = vec4(color * emissive, alpha * 0.92 * uOpacityMult);
+      }
+    `;
+
+    // 3. Main accretion disk (horizontal)
+    const diskMat = new THREE.ShaderMaterial({
+      uniforms: { uTime: { value: 0 }, uOpacityMult: { value: 1.0 } },
+      vertexShader: diskVert,
+      fragmentShader: diskFrag,
+      side: THREE.DoubleSide,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
     });
-    const disk = new THREE.Mesh(diskGeom, diskMat);
+    const disk = new THREE.Mesh(new THREE.RingGeometry(21, 65, 128, 4), diskMat);
     disk.rotation.x = Math.PI / 2;
     disk.name = 'accretionDisk';
     group.add(disk);
 
-    // 3. Atmospheric Halo / Glow - CORRIGIDO
-    // transparent e depthWrite: false são cruciais para não misturar a profundidade.
-    const haloGeom = new THREE.SphereGeometry(75, 32, 32);
-    const haloMat = new THREE.MeshBasicMaterial({
-        color: '#ff9900',
-        transparent: true,
-        opacity: 0.1,
+    // 4. Ghost disk — relativistic lensing mirror image (tilted ~20°, smaller, dimmer)
+    const ghostMat = new THREE.ShaderMaterial({
+      uniforms: { uTime: { value: 0 }, uOpacityMult: { value: 0.35 } },
+      vertexShader: diskVert,
+      fragmentShader: diskFrag,
+      side: THREE.DoubleSide,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const ghostDisk = new THREE.Mesh(new THREE.RingGeometry(21, 48, 128, 4), ghostMat);
+    ghostDisk.rotation.x = Math.PI / 2 + 0.38;
+    ghostDisk.name = 'ghostDisk';
+    group.add(ghostDisk);
+
+    // 5. Inner corona (tight glow hugging the event horizon)
+    group.add(Object.assign(
+      new THREE.Mesh(
+        new THREE.SphereGeometry(27, 32, 32),
+        new THREE.MeshBasicMaterial({
+          color: new THREE.Color(1.8, 0.55, 0.08),
+          transparent: true, opacity: 0.13,
+          side: THREE.BackSide,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        })
+      ),
+      { name: 'corona' }
+    ));
+
+    // 6. Outer atmospheric halo
+    const halo = new THREE.Mesh(
+      new THREE.SphereGeometry(88, 32, 32),
+      new THREE.MeshBasicMaterial({
+        color: new THREE.Color('#ff5500'),
+        transparent: true, opacity: 0.055,
         side: THREE.BackSide,
         blending: THREE.AdditiveBlending,
-        depthWrite: false 
-    });
-    const halo = new THREE.Mesh(haloGeom, haloMat);
+        depthWrite: false,
+      })
+    );
     halo.name = 'halo';
-    halo.renderOrder = 1; // Renderiza antes do Event Horizon
     group.add(halo);
 
     return group;
@@ -225,22 +298,25 @@ export class SolarFactory {
         }
 
         if (name === 'blackhole') {
-            const disk = obj.getObjectByName('accretionDisk');
-            if (disk) disk.rotation.z += dt * 0.2;
-            
+            const disk = obj.getObjectByName('accretionDisk') as THREE.Mesh | undefined;
+            const ghostDisk = obj.getObjectByName('ghostDisk') as THREE.Mesh | undefined;
+
+            if (disk) {
+                disk.rotation.z += dt * 0.18;
+                (disk.material as THREE.ShaderMaterial).uniforms.uTime.value += dt;
+            }
+            if (ghostDisk) {
+                ghostDisk.rotation.z += dt * 0.12;
+                (ghostDisk.material as THREE.ShaderMaterial).uniforms.uTime.value += dt;
+            }
+
             if (camera) {
                 const dist = camera.position.distanceTo(obj.position);
-                const halo = obj.getObjectByName('halo');
-                
-                // If we are getting very close to the center, hide the bright outer shell
-                // to simulate being inside the Event Horizon
-                if (dist < 50) {
-                    if (halo) halo.visible = false;
-                    if (disk) disk.visible = false;
-                } else {
-                    if (halo) halo.visible = true;
-                    if (disk) disk.visible = true;
-                }
+                const inside = dist < 50;
+                ['halo', 'corona', 'accretionDisk', 'ghostDisk', 'photonRing'].forEach(n => {
+                    const o = obj.getObjectByName(n);
+                    if (o) o.visible = !inside;
+                });
             }
         }
     });

@@ -7,6 +7,7 @@ import LoadingScreen from './components/LoadingScreen';
 import StaticHUD from './components/StaticHUD';
 import { useTranslation } from 'react-i18next';
 import LiraChatWidget from './components/LiraChatWidget';
+import { useWindowSize, isMobile } from './hooks/useWindowSize';
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -14,6 +15,18 @@ export default function App() {
   const engineRef = useRef<SolarExperience | null>(null);
   const audioManager = useRef(new AudioManager('/bg-music.mp3'));
   const [sectionKey, setSectionKey] = useState('intro');
+  const [displayKey, setDisplayKey] = useState('intro');
+  const { width } = useWindowSize();
+  const mobile = isMobile(width);
+
+  // Delay the 'finale' overlay so the camera has time to fly into the black hole
+  useEffect(() => {
+    if (sectionKey === 'finale') {
+      const t = setTimeout(() => setDisplayKey('finale'), 3500);
+      return () => clearTimeout(t);
+    }
+    setDisplayKey(sectionKey);
+  }, [sectionKey]);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -55,16 +68,16 @@ export default function App() {
       <LoadingScreen />
       <StaticHUD />
       
-      <OverlayUI sectionKey={sectionKey} />
+      <OverlayUI sectionKey={displayKey} />
       <AudioUI manager={audioManager.current} />
       <LiraChatWidget />
 
       {/* Navigation Hint */}
-      <div 
-        className="mono" 
+      <div
+        className="mono"
         style={{
           position: 'fixed',
-          bottom: '20px',
+          bottom: mobile ? '90px' : '20px',
           right: '20px',
           color: 'var(--primary)',
           fontSize: '0.65rem',
@@ -79,7 +92,7 @@ export default function App() {
         }}
         onClick={() => engineRef.current?.journey.next()}
       >
-        [ {window.innerWidth < 768 ? 'TAP_TO_TRAVEL' : 'TAP_OR_SPACE_TO_TRAVEL'} ]
+        [ {mobile ? 'TAP_TO_TRAVEL' : 'TAP_OR_SPACE_TO_TRAVEL'} ]
       </div>
     </div>
   );
