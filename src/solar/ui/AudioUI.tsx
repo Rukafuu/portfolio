@@ -24,21 +24,33 @@ export const AudioUI: React.FC<AudioUIProps> = ({ manager }) => {
     manager.setVolume(v);
   };
 
+  const stopAllTouch = (e: React.TouchEvent | React.PointerEvent) => {
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+  };
+
   return (
-    <div className="audio-ui mono" style={{
-      position: 'fixed',
-      bottom: mobile ? '16px' : '30px',
-      left: mobile ? '12px' : '30px',
-      zIndex: 1000,
-      display: 'flex',
-      alignItems: 'center',
-      gap: mobile ? '0.5rem' : '1rem',
-      background: 'var(--glass)',
-      padding: mobile ? '8px 12px' : '10px 20px',
-      border: '1px solid var(--glass-border)',
-      pointerEvents: 'auto',
-      borderRadius: '5px'
-    }}>
+    <div
+      className="audio-ui mono"
+      onTouchStart={stopAllTouch}
+      onTouchMove={stopAllTouch}
+      onTouchEnd={stopAllTouch}
+      onPointerDown={stopAllTouch}
+      style={{
+        position: 'fixed',
+        bottom: mobile ? '16px' : '30px',
+        left: mobile ? '12px' : '30px',
+        zIndex: 1000,
+        display: 'flex',
+        alignItems: 'center',
+        gap: mobile ? '0.5rem' : '1rem',
+        background: 'var(--glass)',
+        padding: mobile ? '8px 12px' : '10px 20px',
+        border: '1px solid var(--glass-border)',
+        pointerEvents: 'auto',
+        borderRadius: '5px',
+        touchAction: 'none',
+      }}>
       <button
         onClick={toggle}
         style={{ background: 'none', border: 'none', color: 'var(--primary)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
@@ -55,9 +67,19 @@ export const AudioUI: React.FC<AudioUIProps> = ({ manager }) => {
           step="0.01"
           value={vol}
           onChange={handleVol}
-          onPointerDown={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
-          style={{ width: mobile ? '60px' : '80px', accentColor: 'var(--primary)', cursor: 'pointer' }}
+          onPointerDown={stopAllTouch}
+          onTouchStart={stopAllTouch}
+          onTouchMove={(e) => {
+            e.stopPropagation();
+            e.nativeEvent.stopImmediatePropagation();
+            // Manually update volume from touch position
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const v = Math.max(0, Math.min(1, x / rect.width));
+            setVol(v);
+            manager.setVolume(v);
+          }}
+          style={{ width: mobile ? '70px' : '80px', accentColor: 'var(--primary)', cursor: 'pointer', touchAction: 'none' }}
         />
       </div>
 

@@ -59,13 +59,13 @@ export class SolarFactory {
     const material = new THREE.MeshStandardMaterial({
       map: texture,
       emissive: new THREE.Color('#ffaa00'),
-      emissiveIntensity: 3,
+      emissiveIntensity: 1.5,
       emissiveMap: texture
     });
     const mesh = new THREE.Mesh(geometry, material);
     group.add(mesh);
 
-    const light = new THREE.PointLight('#fff1d4', 800, 2500, 1.8);
+    const light = new THREE.PointLight('#fff1d4', 400, 2500, 1.8);
     light.castShadow = true;
     group.add(light);
     

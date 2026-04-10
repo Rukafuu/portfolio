@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Bot } from 'lucide-react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useTranslation } from 'react-i18next';
+import { useWindowSize, isMobile } from '../hooks/useWindowSize';
 
 // @ts-ignore
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
@@ -99,14 +100,17 @@ export default function LiraChatWidget() {
     }
   };
 
+  const { width } = useWindowSize();
+  const mobile = isMobile(width);
+
   return (
     <>
       <motion.button
         className="hud-card"
         style={{
           position: 'fixed',
-          bottom: '30px',
-          right: '30px',
+          bottom: mobile ? '90px' : '30px',
+          right: mobile ? '12px' : '30px',
           width: '60px',
           height: '60px',
           borderRadius: '50%',
